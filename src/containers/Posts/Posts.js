@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
+import './Posts.css';
 import Post from '../../components/Post/Post';
 import { AppContext } from '../../context/AppContext';
 
 const PostsContainer = () => {
-  const { posts } = useContext(AppContext);
+  const { posts, randomImage } = useContext(AppContext);
   const [numberOfPosts, setNumberOfPosts] = useState(12);
 
   const displayMorePostsHandler = () => {
@@ -11,18 +12,20 @@ const PostsContainer = () => {
   };
 
   return (
-    <>
-      <ul>
+    <div className='posts-wrapper'>
+      <ul className='posts-container'>
         {posts.slice(0, numberOfPosts).map(posts => {
           return (
-            <li key={posts.id}>
-              <Post posts={posts} />
+            <li key={posts.id} className='post'>
+              <Post posts={posts} randomImage={randomImage} />
             </li>
           );
         })}
-        <button onClick={displayMorePostsHandler}>Load More</button>
       </ul>
-    </>
+      <button onClick={displayMorePostsHandler} className='post--loader'>
+        Load More
+      </button>
+    </div>
   );
 };
 

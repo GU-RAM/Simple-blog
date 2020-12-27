@@ -4,8 +4,4 @@ async function createDataFetcher(fetchData, setState, setLoadingData) {
   setLoadingData(false);
 }
 
-// const getUsers =(id) => {
-//   setUsers( )
-// }
-
 export { createDataFetcher };

@@ -17,6 +17,11 @@ const AppContextComponent = ({ children }) => {
     createDataFetcher(getUsers, setUsers, setUserLoadingStatus);
     createDataFetcher(getComments, setComments, setCommentsLoadingStatus);
   }, []);
+
+  const randomImage = id => {
+    return `https://picsum.photos/id/${id}/200`;
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -26,6 +31,7 @@ const AppContextComponent = ({ children }) => {
         postsLoadingStatus,
         userLoadingStatus,
         commentsLoadingStatus,
+        randomImage,
       }}
     >
       {children}

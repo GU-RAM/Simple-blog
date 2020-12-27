@@ -5,16 +5,19 @@ import Comments from './Comments/Comments';
 
 const SinglePost = () => {
   const { id } = useParams();
-  const { posts, users, comments } = useContext(AppContext);
+  const { posts, users, comments, randomImage } = useContext(AppContext);
   const [singlePost, setSinglePost] = useState([]);
-  // const [singleComment, setSingleComment] = useState();
 
   useEffect(() => {
     setSinglePost(posts.find(post => post.userId === +id));
   }, [posts, users, comments]);
+
   return (
     <>
       <h1>{singlePost && singlePost.title}</h1>
+      <span>
+        <img src={randomImage(id)} alt='post image' />
+      </span>
       <p>{singlePost && singlePost.body}</p>
       <p>{singlePost && singlePost.title}</p>
       <section>

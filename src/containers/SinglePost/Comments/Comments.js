@@ -3,7 +3,7 @@ import React from 'react';
 const Comments = ({ comments, id }) => {
   return (
     <>
-      <p>Comment Section</p>
+      <h1>Comment Section</h1>
       {comments
         .filter(comment => comment.postId === id)
         .map(comment => {
