@@ -22,9 +22,11 @@ const PostsContainer = () => {
           );
         })}
       </ul>
-      <button onClick={displayMorePostsHandler} className='post--loader'>
-        Load More
-      </button>
+      {numberOfPosts >= posts.length ? null : (
+        <button onClick={displayMorePostsHandler} className='post--loader'>
+          Load More
+        </button>
+      )}
     </div>
   );
 };

@@ -1,0 +1,41 @@
+.singlePost-container {
+  padding: 15px;
+}
+
+.singlePost-container header {
+  display: flex;
+}
+
+.singlePost-container header h1 {
+  margin-right: auto;
+  border: 2px solid gray;
+  padding: 15px;
+  background-color: lightgray;
+}
+
+.singlePost-container header button {
+  cursor: pointer;
+  background-color: lightgray;
+  margin-left: 20px;
+}
+
+.singlePost-main {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 40% 60%;
+  grid-gap: 20px;
+}
+
+.singlePost-comments {
+  margin: 50px 0;
+  border: 2px solid #000;
+  padding: 15px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .singlePost-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+  }
+}

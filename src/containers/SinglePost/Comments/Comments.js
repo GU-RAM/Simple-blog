@@ -1,4 +1,5 @@
 import React from 'react';
+import './Comments.css';
 
 const Comments = ({ comments, id }) => {
   return (
@@ -9,8 +10,8 @@ const Comments = ({ comments, id }) => {
         .map(comment => {
           const { postId, name, body } = comment;
           return (
-            <div key={postId}>
-              <span>{name}</span>
+            <div key={postId} className='comment-wrapper'>
+              <p>{name}</p>
               <p>{body}</p>
             </div>
           );

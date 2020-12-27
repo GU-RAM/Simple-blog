@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import './SinglePost.css';
 import { AppContext } from '../../context/AppContext';
 import Comments from './Comments/Comments';
 
@@ -13,17 +14,21 @@ const SinglePost = () => {
   }, [posts, users, comments]);
 
   return (
-    <>
-      <h1>{singlePost && singlePost.title}</h1>
-      <span>
-        <img src={randomImage(id)} alt='post image' />
-      </span>
-      <p>{singlePost && singlePost.body}</p>
-      <p>{singlePost && singlePost.title}</p>
-      <section>
+    <div className='singlePost-container'>
+      <header>
+        <h1>{singlePost && singlePost.title}</h1>
+        <button>Author: author username</button>
+      </header>
+      <div className='singlePost-main'>
+        <div>
+          <img src={randomImage(id)} alt='post image' />
+        </div>
+        <p>{singlePost && singlePost.body}</p>
+      </div>
+      <section className='singlePost-comments'>
         {singlePost && <Comments comments={comments} id={singlePost.userId} />}
       </section>
-    </>
+    </div>
   );
 };
 
