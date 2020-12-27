@@ -1,10 +1,9 @@
-import React from 'react';
 import axios from 'axios';
 import ApiConfig from '../config/api';
 
 async function getPosts() {
   try {
-    const { data } = axios.get(`${ApiConfig.MAIN_ENDPOINT}/posts`);
+    const { data } = await axios.get(`${ApiConfig.MAIN_ENDPOINT}/posts`);
     return data;
   } catch (error) {
     console.log('error');
@@ -15,7 +14,7 @@ async function getPosts() {
 
 async function getUsers() {
   try {
-    const { data } = axios.get(`${ApiConfig.MAIN_ENDPOINT}/users`);
+    const { data } = await axios.get(`${ApiConfig.MAIN_ENDPOINT}/users`);
     return data;
   } catch (error) {
     console.log('error');
@@ -26,7 +25,7 @@ async function getUsers() {
 
 async function getComments() {
   try {
-    const { data } = axios.get(`${ApiConfig.MAIN_ENDPOINT}/comments`);
+    const { data } = await axios.get(`${ApiConfig.MAIN_ENDPOINT}/comments`);
     return data;
   } catch (error) {
     console.log('error');

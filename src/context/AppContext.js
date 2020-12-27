@@ -1,7 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { getPosts, getUsers, getComments } from '../api/index';
+import { createDataFetcher } from '../utilities/helpers';
 
-const AppContext = createContext();
+const AppContext = createContext(undefined);
 
 const AppContextComponent = ({ children }) => {
   const [posts, setPosts] = useState([]);
@@ -17,10 +18,19 @@ const AppContextComponent = ({ children }) => {
     createDataFetcher(getComments, setComments, setCommentsLoadingStatus);
   }, []);
   return (
-    <AppContext.Provider value={(posts, users, comments)}>
+    <AppContext.Provider
+      value={{
+        posts,
+        users,
+        comments,
+        postsLoadingStatus,
+        userLoadingStatus,
+        commentsLoadingStatus,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
 };
 
-export default AppContextComponent;
+export { AppContext, AppContextComponent };
