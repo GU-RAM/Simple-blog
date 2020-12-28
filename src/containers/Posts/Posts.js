@@ -3,7 +3,7 @@ import './Posts.css';
 import Post from '../../components/Post/Post';
 import { AppContext } from '../../context/AppContext';
 
-const PostsContainer = () => {
+const PostsContainer = ({ personelizedPost }) => {
   const { posts, randomImage } = useContext(AppContext);
   const [numberOfPosts, setNumberOfPosts] = useState(12);
 
@@ -14,13 +14,21 @@ const PostsContainer = () => {
   return (
     <div className='posts-wrapper'>
       <ul className='posts-container'>
-        {posts.slice(0, numberOfPosts).map(posts => {
-          return (
-            <li key={posts.id} className='post'>
-              <Post posts={posts} randomImage={randomImage} />
-            </li>
-          );
-        })}
+        {personelizedPost
+          ? personelizedPost.slice(0, numberOfPosts).map(posts => {
+              return (
+                <li key={posts.id} className='post'>
+                  <Post posts={posts} randomImage={randomImage} />
+                </li>
+              );
+            })
+          : posts.slice(0, numberOfPosts).map(posts => {
+              return (
+                <li key={posts.id} className='post'>
+                  <Post posts={posts} randomImage={randomImage} />
+                </li>
+              );
+            })}
       </ul>
       {numberOfPosts >= posts.length ? null : (
         <button onClick={displayMorePostsHandler} className='post--loader'>

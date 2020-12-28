@@ -1,0 +1,24 @@
+.userPage-container {
+  padding: 15px;
+  margin: auto;
+}
+
+.userPage__main {
+  margin: auto;
+  margin-bottom: 100px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 20px;
+}
+
+.userPage__posts-container {
+  border: 2px solid #000;
+}
+
+@media only screen and (min-width: 1200px) {
+  .userPage-container {
+    width: 90%;
+    max-width: 1400px;
+  }
+}
