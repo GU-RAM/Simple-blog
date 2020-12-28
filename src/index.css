@@ -24,3 +24,8 @@ img {
 a {
   text-decoration: none;
 }
+
+.loader {
+  display: block;
+  margin: auto;
+}

@@ -1,39 +1,32 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
+import ClipLoader from 'react-spinners/ClipLoader';
 import './Posts.css';
-import Post from '../../components/Post/Post';
+import PostsLoader from '../../components/PostsLoader/PostsLoader';
 import { AppContext } from '../../context/AppContext';
 
 const PostsContainer = ({ personelizedPost }) => {
-  const { posts, randomImage } = useContext(AppContext);
-  const [numberOfPosts, setNumberOfPosts] = useState(12);
-
-  const displayMorePostsHandler = () => {
-    setNumberOfPosts(prevNumberOfPosts => prevNumberOfPosts + 12);
-  };
+  const { posts, randomImage, postsLoadingStatus } = useContext(AppContext);
 
   return (
     <div className='posts-wrapper'>
-      <ul className='posts-container'>
-        {personelizedPost
-          ? personelizedPost.slice(0, numberOfPosts).map(posts => {
-              return (
-                <li key={posts.id} className='post'>
-                  <Post posts={posts} randomImage={randomImage} />
-                </li>
-              );
-            })
-          : posts.slice(0, numberOfPosts).map(posts => {
-              return (
-                <li key={posts.id} className='post'>
-                  <Post posts={posts} randomImage={randomImage} />
-                </li>
-              );
-            })}
-      </ul>
-      {numberOfPosts >= posts.length ? null : (
-        <button onClick={displayMorePostsHandler} className='post--loader'>
-          Load More
-        </button>
+      {postsLoadingStatus ? (
+        <ClipLoader
+          css='
+            display: block;
+            margin 0 auto;
+          '
+          size={150}
+          color={'#123abc'}
+          loading={postsLoadingStatus}
+        />
+      ) : (
+        <div>
+          <PostsLoader
+            posts={posts}
+            randomImage={randomImage}
+            personelizedPost={personelizedPost}
+          />
+        </div>
       )}
     </div>
   );

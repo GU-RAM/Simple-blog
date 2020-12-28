@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Post.css';
 
-const Post = ({ posts, randomImage }) => {
-  const { userId, title, id } = posts;
+const Post = ({ post, randomImage }) => {
+  const { userId, title, id } = post;
   return (
     <>
       <h3>
