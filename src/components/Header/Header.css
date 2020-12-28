@@ -5,6 +5,7 @@
   background-color: brown;
   flex-direction: column;
   box-shadow: 2px 2px 6px #000;
+  margin-bottom: 100px;
 }
 
 .main-nav a {
