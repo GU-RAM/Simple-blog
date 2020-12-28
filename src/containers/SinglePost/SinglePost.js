@@ -19,7 +19,7 @@ const SinglePost = () => {
     <div className='singlePost-container'>
       <header>
         <h1>{singlePost && singlePost.title}</h1>
-        <Link to={`/posts/${id}/${user.name}`}>Author: author username</Link>
+        <Link to={`/users/${id}/${user.name}`}>Author: author username</Link>
       </header>
       <div className='singlePost-main'>
         <div>
