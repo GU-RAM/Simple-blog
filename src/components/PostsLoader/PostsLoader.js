@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Post from './Post/Post';
 
-const PostsLoader = ({ posts, randomImage, personelizedPost }) => {
+const PostsLoader = ({ posts, randomImage }) => {
+  console.log('PostsLoader -> posts', posts);
   const [numberOfPosts, setNumberOfPosts] = useState(12);
 
   const displayMorePostsHandler = () => {
@@ -11,21 +12,13 @@ const PostsLoader = ({ posts, randomImage, personelizedPost }) => {
   return (
     <>
       <ul className='posts-container'>
-        {personelizedPost
-          ? personelizedPost.slice(0, numberOfPosts).map(post => {
-              return (
-                <li key={post.id} className='post'>
-                  <Post post={post} randomImage={randomImage} />
-                </li>
-              );
-            })
-          : posts.slice(0, numberOfPosts).map(post => {
-              return (
-                <li key={post.id} className='post'>
-                  <Post post={post} randomImage={randomImage} />
-                </li>
-              );
-            })}
+        {posts.slice(0, numberOfPosts).map(post => {
+          return (
+            <li key={post.id} className='post'>
+              <Post post={post} randomImage={randomImage} />
+            </li>
+          );
+        })}
       </ul>
       {numberOfPosts >= posts.length ? null : (
         <button onClick={displayMorePostsHandler} className='post--loader'>

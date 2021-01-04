@@ -4,7 +4,7 @@ import './Posts.css';
 import PostsLoader from '../../components/PostsLoader/PostsLoader';
 import { AppContext } from '../../context/AppContext';
 
-const PostsContainer = ({ personelizedPost }) => {
+const PostsContainer = () => {
   const { posts, randomImage, postsLoadingStatus } = useContext(AppContext);
 
   return (
@@ -21,11 +21,7 @@ const PostsContainer = ({ personelizedPost }) => {
         />
       ) : (
         <div>
-          <PostsLoader
-            posts={posts}
-            randomImage={randomImage}
-            personelizedPost={personelizedPost}
-          />
+          <PostsLoader posts={posts} randomImage={randomImage} />
         </div>
       )}
     </div>

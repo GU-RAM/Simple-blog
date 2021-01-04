@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Post.css';
 
 const Post = ({ post, randomImage }) => {
-  const { userId, title, id } = post;
+  const { title, id } = post;
   return (
     <>
       <h3>
@@ -12,7 +12,7 @@ const Post = ({ post, randomImage }) => {
       <div>
         <img src={randomImage(id)} alt='post image' />
       </div>
-      <Link to={`/posts/${userId}`} className='link'>
+      <Link to={`/posts/${id}`} className='link'>
         Read More
       </Link>
     </>

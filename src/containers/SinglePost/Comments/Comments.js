@@ -8,9 +8,9 @@ const Comments = ({ comments, id }) => {
       {comments
         .filter(comment => comment.postId === id)
         .map(comment => {
-          const { postId, name, body } = comment;
+          const { id, name, body } = comment;
           return (
-            <div key={postId} className='comment-wrapper'>
+            <div key={id} className='comment-wrapper'>
               <p>{name}</p>
               <p>{body}</p>
             </div>

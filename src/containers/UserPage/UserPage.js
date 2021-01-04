@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import './UserPage.css';
-import Posts from '../Posts/Posts';
+import PostsLoader from '../../components/PostsLoader/PostsLoader';
 
 const UserPage = () => {
   const { id } = useParams();
@@ -29,7 +29,7 @@ const UserPage = () => {
         </div>
       </section>
       <section className='userPage__posts-container'>
-        <Posts personelizedPost={personelizedPost} />
+        <PostsLoader posts={personelizedPost} randomImage={randomImage} />
       </section>
     </div>
   );

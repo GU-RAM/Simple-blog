@@ -8,18 +8,25 @@ const SinglePost = () => {
   const { id } = useParams();
   const { posts, users, comments, randomImage } = useContext(AppContext);
   const [singlePost, setSinglePost] = useState([]);
+  console.log('SinglePost -> singlePost', singlePost);
   const [user, setUser] = useState([]);
+  console.log('SinglePost -> user', user);
 
   useEffect(() => {
-    setSinglePost(posts.find(post => post.userId === +id));
-    setUser(users.find(user => user.id === +id));
-  }, [posts, users, comments]);
+    setSinglePost(posts.find(post => post.id === +id));
+    setUser(users.find(user => user.id === singlePost?.userId));
+  }, [posts, users, comments, user]);
 
   return (
     <div className='singlePost-container'>
       <header>
         <h1>{singlePost && singlePost.title}</h1>
-        <Link to={`/users/${id}/${user.name}`}>Author: author username</Link>
+
+        {user && (
+          <Link to={`/users/${user.id}/${user.name}`}>
+            Author: {user.username}
+          </Link>
+        )}
       </header>
       <div className='singlePost-main'>
         <div>
