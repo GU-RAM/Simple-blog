@@ -34,4 +34,16 @@ async function getComments() {
   return [];
 }
 
-export { getPosts, getUsers, getComments };
+async function postNewComment(dat, comments, setComments) {
+  try {
+    const { data } = await axios.post(
+      `${ApiConfig.MAIN_ENDPOINT}/comments`,
+      dat
+    );
+    return setComments([...comments, data]);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { getPosts, getUsers, getComments, postNewComment };

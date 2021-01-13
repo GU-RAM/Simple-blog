@@ -4,3 +4,17 @@
   background-color: aqua;
   padding: 10px;
 }
+
+.comment-header {
+  display: flex;
+}
+
+.comment-header button {
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+}
+
+.comment-header button:hover {
+  box-shadow: 0 0 3px #000;
+}

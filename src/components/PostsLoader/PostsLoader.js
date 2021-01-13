@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Post from './Post/Post';
 
 const PostsLoader = ({ posts, randomImage }) => {
-  console.log('PostsLoader -> posts', posts);
   const [numberOfPosts, setNumberOfPosts] = useState(12);
 
   const displayMorePostsHandler = () => {

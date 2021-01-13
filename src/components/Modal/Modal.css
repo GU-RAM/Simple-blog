@@ -1,0 +1,41 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.content {
+  position: absolute;
+  top: calc(50% - 182px);
+  left: calc(50% - 152px);
+  border: 1px solid #ccc;
+  background-color: #fff;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.content input,
+textarea,
+button {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.content button {
+  cursor: pointer;
+}
+
+.content h4 {
+  margin: 10px;
+}
+
+.warning-text {
+  color: red;
+}

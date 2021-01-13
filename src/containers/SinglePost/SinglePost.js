@@ -8,9 +8,7 @@ const SinglePost = () => {
   const { id } = useParams();
   const { posts, users, comments, randomImage } = useContext(AppContext);
   const [singlePost, setSinglePost] = useState([]);
-  console.log('SinglePost -> singlePost', singlePost);
   const [user, setUser] = useState([]);
-  console.log('SinglePost -> user', user);
 
   useEffect(() => {
     setSinglePost(posts.find(post => post.id === +id));

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getPosts, getUsers, getComments } from '../api/index';
+import { getPosts, getUsers, getComments, postNewComment } from '../api/index';
 import { createDataFetcher } from '../utilities/helpers';
 
 const AppContext = createContext(undefined);
@@ -18,10 +18,13 @@ const AppContextComponent = ({ children }) => {
     createDataFetcher(getComments, setComments, setCommentsLoadingStatus);
   }, []);
 
+  function addNewComment(dat) {
+    return postNewComment(dat, comments, setComments);
+  }
+
   const randomImage = id => {
     return `https://picsum.photos/id/${id}/200`;
   };
-
   return (
     <AppContext.Provider
       value={{
@@ -32,6 +35,7 @@ const AppContextComponent = ({ children }) => {
         userLoadingStatus,
         commentsLoadingStatus,
         randomImage,
+        addNewComment,
       }}
     >
       {children}

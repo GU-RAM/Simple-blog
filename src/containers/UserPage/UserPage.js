@@ -6,14 +6,14 @@ import PostsLoader from '../../components/PostsLoader/PostsLoader';
 
 const UserPage = () => {
   const { id } = useParams();
-  const { users, posts, comments, randomImage } = useContext(AppContext);
+  const { users, posts, randomImage } = useContext(AppContext);
   const [user, setUser] = useState([]);
   const [personelizedPost, setPersonelizedPost] = useState([]);
 
   useEffect(() => {
     setUser(users.find(user => user.id === +id));
     setPersonelizedPost(posts.filter(post => post.userId === +id));
-  }, [posts, users, comments]);
+  }, [posts, users]);
 
   return (
     <div className='userPage-container'>

@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Comments.css';
+import { useParams } from 'react-router-dom';
+import Modal from '../../../components/Modal/Modal';
 
-const Comments = ({ comments, id }) => {
+const Comments = ({ comments }) => {
+  const [displayModal, setDisplayModal] = useState(false);
+  const { id: paramId } = useParams();
+
   return (
     <>
-      <h1>Comment Section</h1>
+      <h1 className='comment-header'>
+        <span>Comment Section</span>
+        <button onClick={() => setDisplayModal(!displayModal)}>
+          Add Comment
+        </button>
+        {displayModal && <Modal modalHandler={setDisplayModal} />}
+      </h1>
       {comments
-        .filter(comment => comment.postId === id)
+        .filter(comment => comment.postId.toString() === paramId.toString())
         .map(comment => {
           const { id, name, body } = comment;
           return (
