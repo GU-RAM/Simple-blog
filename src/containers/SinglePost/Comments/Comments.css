@@ -9,12 +9,17 @@
   display: flex;
 }
 
+.comment-header span {
+  margin-right: auto;
+}
+
 .comment-header button {
   cursor: pointer;
   border: none;
   padding: 10px;
+  box-shadow: 0 0 3px #000;
 }
 
 .comment-header button:hover {
-  box-shadow: 0 0 3px #000;
+  box-shadow: 1px 1px 6px #000;
 }

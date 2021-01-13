@@ -36,7 +36,7 @@ const Modal = ({ modalHandler }) => {
     });
   };
 
-  function handleSubmit(e) {
+  const handleSubmit = e => {
     if (!name || !email || !body) {
       setWarning('Fields are not completed');
       e.preventDefault();
@@ -45,7 +45,7 @@ const Modal = ({ modalHandler }) => {
       modalHandler(false);
       e.preventDefault();
     }
-  }
+  };
 
   return (
     <div className='modal'>
