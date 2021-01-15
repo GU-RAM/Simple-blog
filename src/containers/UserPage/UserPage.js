@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import './UserPage.css';
@@ -7,13 +7,9 @@ import PostsLoader from '../../components/PostsLoader/PostsLoader';
 const UserPage = () => {
   const { id } = useParams();
   const { users, posts, randomImage } = useContext(AppContext);
-  const [user, setUser] = useState([]);
-  const [personelizedPost, setPersonelizedPost] = useState([]);
 
-  useEffect(() => {
-    setUser(users.find(user => user.id === +id));
-    setPersonelizedPost(posts.filter(post => post.userId === +id));
-  }, [posts, users]);
+  const user = users.find(user => user.id === +id);
+  const personelizedPost = posts.filter(post => post.userId === +id);
 
   return (
     <div className='userPage-container'>

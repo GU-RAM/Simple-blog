@@ -10,17 +10,17 @@ function reducer(state, { field, value }) {
   };
 }
 
+const initialState = {
+  name: '',
+  email: '',
+  body: '',
+};
+
 const Modal = ({ modalHandler }) => {
   const { id } = useParams();
   const [warning, setWarning] = useState('');
-  const { addNewComment, comments } = useContext(AppContext);
-  const initialState = {
-    postId: +id,
-    id: comments.length,
-    name: '',
-    email: '',
-    body: '',
-  };
+  const { addNewComment } = useContext(AppContext);
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { name, email, body } = state;
@@ -41,7 +41,7 @@ const Modal = ({ modalHandler }) => {
       setWarning('Fields are not completed');
       e.preventDefault();
     } else {
-      addNewComment(state);
+      addNewComment({ ...state, postId: +id });
       modalHandler(false);
       e.preventDefault();
     }
@@ -76,9 +76,7 @@ const Modal = ({ modalHandler }) => {
           value={body}
           placeholder={'comment'}
         />
-        <h4 className='warning-text'>
-          {warning ? warning : () => modalHandler(false)}
-        </h4>
+        <h4 className='warning-text'>{warning ? warning : null}</h4>
         <button type='submit'>Submit</button>
         <button onClick={() => modalHandler(false)}>Close</button>
       </form>
@@ -86,4 +84,4 @@ const Modal = ({ modalHandler }) => {
   );
 };
 
-export default React.memo(Modal);
+export default Modal;

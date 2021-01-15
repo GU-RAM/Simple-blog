@@ -1,40 +1,57 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import ClipLoader from 'react-spinners/ClipLoader';
 import './SinglePost.css';
 import { AppContext } from '../../context/AppContext';
 import Comments from './Comments/Comments';
 
 const SinglePost = () => {
   const { id } = useParams();
-  const { posts, users, comments, randomImage } = useContext(AppContext);
-  const [singlePost, setSinglePost] = useState([]);
-  const [user, setUser] = useState([]);
+  const {
+    posts,
+    users,
+    comments,
+    randomImage,
+    postsLoadingStatus,
+    userLoadingStatus,
+    commentsLoadingStatus,
+  } = useContext(AppContext);
 
-  useEffect(() => {
-    setSinglePost(posts.find(post => post.id === +id));
-    setUser(users.find(user => user.id === singlePost?.userId));
-  }, [posts, users, comments, user]);
+  const singlePost = posts.find(post => post.id === +id);
+  const user = users.find(user => user.id === singlePost?.userId);
 
   return (
     <div className='singlePost-container'>
-      <header>
-        <h1>{singlePost && singlePost.title}</h1>
+      {postsLoadingStatus && userLoadingStatus && commentsLoadingStatus ? (
+        <ClipLoader
+          css='
+            display: block;
+            margin 0 auto;
+          '
+          size={150}
+          color={'#123abc'}
+          loading={postsLoadingStatus}
+        />
+      ) : (
+        <>
+          <header>
+            <h1> singlePost.title</h1>
 
-        {user && (
-          <Link to={`/users/${user.id}/${user.name}`}>
-            Author: {user.username}
-          </Link>
-        )}
-      </header>
-      <div className='singlePost-main'>
-        <div>
-          <img src={randomImage(id)} alt='post image' />
-        </div>
-        <p>{singlePost && singlePost.body}</p>
-      </div>
-      <section className='singlePost-comments'>
-        {singlePost && <Comments comments={comments} id={singlePost.userId} />}
-      </section>
+            {user && (
+              <Link to={`/users/${user.id}`}>Author: {user.username}</Link>
+            )}
+          </header>
+          <div className='singlePost-main'>
+            <div>
+              <img src={randomImage(id)} alt='post image' />
+            </div>
+            <p> {singlePost.body}</p>
+          </div>
+          <section className='singlePost-comments'>
+            <Comments comments={comments} id={singlePost.userId} />
+          </section>
+        </>
+      )}
     </div>
   );
 };
