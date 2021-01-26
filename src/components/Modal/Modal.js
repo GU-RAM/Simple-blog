@@ -51,6 +51,7 @@ const Modal = ({ modalHandler }) => {
     <div className='modal'>
       <form className='content' onSubmit={e => handleSubmit(e)}>
         <input
+          required
           type='text'
           name='name'
           id='user-name'
@@ -59,6 +60,7 @@ const Modal = ({ modalHandler }) => {
           placeholder={'name'}
         />
         <input
+          required
           type='email'
           name='email'
           id='user-email'
@@ -67,6 +69,7 @@ const Modal = ({ modalHandler }) => {
           placeholder={'email'}
         />
         <textarea
+          required
           type='text'
           onChange={onChange}
           name='body'
