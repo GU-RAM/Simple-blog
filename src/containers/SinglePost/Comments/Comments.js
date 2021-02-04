@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Comments.css';
 import { useParams } from 'react-router-dom';
+import CommentForm from '../../../components/CommentForm/CommentForm';
 import Modal from '../../../components/Modal/Modal';
 
 const Comments = ({ comments }) => {
@@ -14,7 +15,11 @@ const Comments = ({ comments }) => {
         <button onClick={() => setDisplayModal(!displayModal)}>
           Add Comment
         </button>
-        {displayModal && <Modal modalHandler={setDisplayModal} />}
+        {displayModal && (
+          <Modal>
+            <CommentForm modalHandler={setDisplayModal} />
+          </Modal>
+        )}
       </h1>
       {comments
         .filter(comment => comment.postId.toString() === paramId.toString())
